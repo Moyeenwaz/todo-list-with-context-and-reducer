@@ -1,7 +1,9 @@
 import React, { useReducer } from 'react';
 
+//reducer function to update the state based on control statements
 const reducer = (state, action) => {
   switch (action.type) {
+    //Each case returns an uptated state based of the action type given by the dispatch function
     case 'ADD_TODO':
       const updatedTodos = [
         ...state.todos,
@@ -61,6 +63,7 @@ const initialState = {
 export const AppContext = React.createContext(initialState);
 
 export const AppProvider = ({ children }) => {
+  //setting the state to the initial state, then the value of the provider to the initial state. Dispatch function was given as a value to share with other components round the application
   const [state, dispatch] = useReducer(reducer, initialState);
   return (
     <AppContext.Provider
